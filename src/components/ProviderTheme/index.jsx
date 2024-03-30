@@ -11,7 +11,7 @@ const theme = {
       c: "#168070",
     },
     secondary: {
-      a: "#ebeaf9",
+      a: "#F8F8FD",
       b: "#FDF8F8",
       c: "#EBFCF9",
     },

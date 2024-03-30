@@ -24,7 +24,7 @@ const PrimaryButtonStyled = styled.button`
 `;
 
 const SecondaryButtonStyled = styled.button`
-  background: transparent;
+  background: ${(props) => props.theme.colors.secondary.a};
   color: ${(props) => props.theme.colors.primary.b};
   border: 2px solid ${(props) => props.theme.colors.primary.b};
   border-radius: ${(props) => props.theme.spacing.s};

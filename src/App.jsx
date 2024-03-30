@@ -13,7 +13,7 @@ function App() {
     <ProviderTheme>
       <Styles />
       <Header />
-      <Container>
+      <Container style={{ margin: "80px auto" }}>
         <Row justify="center">
           <Col lg={6} md={8} sm={12}>
             <Card>
