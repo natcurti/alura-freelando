@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   display: block;
   height: 40px;
   width: 100%;
-  font-size: 18px;
+  font-size: 14px;
   outline: none;
   box-sizing: border-box;
   display: flex;
@@ -42,6 +42,8 @@ const DropDownItemStyled = styled.li`
   font-size: 16px;
   border-bottom: 1px solid ${(props) => props.theme.colors.neutral.c};
   cursor: pointer;
+  color: ${(props) =>
+    props.focusActive ? props.theme.colors.focus : "inherit"};
   &:last-child {
     border: none;
   }
@@ -68,20 +70,63 @@ const DropDownListStyled = styled.ul`
 
 const DropDown = ({ title, options }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [focusedOption, setFocusedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleKeyboard = (e) => {
+    setIsOpen(true);
+    switch (e.key) {
+      case "ArrowDown":
+        e.preventDefault();
+        setFocusedOption((previousOption) => {
+          if (previousOption == null) {
+            return 0;
+          }
+          return (previousOption += 1);
+        });
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        setFocusedOption((previousOption) => {
+          if (!previousOption) {
+            return 0;
+          }
+          return (previousOption -= 1);
+        });
+        break;
+      case "Enter":
+        e.preventDefault();
+        setFocusedOption(null);
+        setIsOpen(false);
+        setSelectedOption(options[focusedOption]);
+        break;
+
+      default:
+        break;
+    }
+  };
 
   return (
     <StyledLabel>
       {title}
-      <StyledButton onClick={() => setIsOpen(!isOpen)} isOpen={isOpen}>
-        <div>Selecione</div>
+      <StyledButton
+        onClick={() => setIsOpen(!isOpen)}
+        isOpen={isOpen}
+        onKeyDown={handleKeyboard}
+      >
+        <div>{selectedOption ? selectedOption.text : "Selecione"}</div>
         <div>
           <span>{isOpen ? "▲" : "▼"}</span>
         </div>
       </StyledButton>
       {isOpen && (
         <DropDownListStyled>
-          {options.map((option) => (
-            <DropDownItemStyled key={option.value}>
+          {options.map((option, index) => (
+            <DropDownItemStyled
+              key={option.value}
+              focusActive={index === focusedOption}
+              onClick={() => setSelectedOption(option)}
+            >
               {option.text}
             </DropDownItemStyled>
           ))}
