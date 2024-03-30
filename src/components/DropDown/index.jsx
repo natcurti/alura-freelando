@@ -53,6 +53,9 @@ const DropDownItemStyled = styled.li`
 `;
 
 const DropDownListStyled = styled.ul`
+  max-height: 250px;
+  overflow: hidden;
+  overflow-y: scroll;
   position: absolute;
   top: 100%;
   left: 0;
@@ -60,12 +63,21 @@ const DropDownListStyled = styled.ul`
   background-color: ${(props) => props.theme.colors.white};
   z-index: 1;
   border: 1px solid ${(props) => props.theme.colors.neutral.a};
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   border-top: none;
   margin: 0;
   padding: 0 ${(props) => props.theme.spacing.xs};
   list-style: none;
+  &::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+    border-radius: 18px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.colors.neutral.a};
+    border-radius: 18px;
+  }
 `;
 
 const DropDown = ({ title, options }) => {
@@ -80,6 +92,9 @@ const DropDown = ({ title, options }) => {
         e.preventDefault();
         setFocusedOption((previousOption) => {
           if (previousOption == null) {
+            return 0;
+          }
+          if (previousOption === options.length - 1) {
             return 0;
           }
           return (previousOption += 1);
@@ -99,6 +114,13 @@ const DropDown = ({ title, options }) => {
         setFocusedOption(null);
         setIsOpen(false);
         setSelectedOption(options[focusedOption]);
+        break;
+      case "Escape":
+      case "Tab":
+        e.preventDefault();
+        setFocusedOption(null);
+        setIsOpen(false);
+        setSelectedOption(null);
         break;
 
       default:
