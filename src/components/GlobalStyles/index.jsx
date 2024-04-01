@@ -8,6 +8,12 @@ const styles = (theme) => {
     body: {
       margin: 0,
     },
+    "#root": {
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    },
   };
 };
 

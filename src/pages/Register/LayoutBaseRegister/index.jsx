@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 const LayoutBaseRegister = () => {
   return (
     <Row justify="center">
-      <Col lg={6} md={8} sm={12}>
+      <Col md={8} sm={12}>
         <Card>
           <Outlet />
         </Card>

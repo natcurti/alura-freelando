@@ -7,7 +7,7 @@ const LayoutBase = () => {
   return (
     <>
       <Header />
-      <Container style={{ margin: "80px auto" }}>
+      <Container style={{ margin: "80px auto", width: "100%" }}>
         <Outlet />
       </Container>
       <Footer />

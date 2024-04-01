@@ -3,6 +3,7 @@ import Typography from "../../../components/Typography";
 import { Link } from "../../../components/Link";
 import customer from "../assets/customer.png";
 import freela from "../assets/freela.png";
+import { Link as RouterLink } from "react-router-dom";
 
 const SelectCustomer = () => {
   return (
@@ -15,13 +16,15 @@ const SelectCustomer = () => {
       </Typography>
       <Row>
         <Col md={6} sm={12}>
-          <img
-            src={customer}
-            alt="Mulher de cabelos escuros cacheados e óculos, com a mão apoiada no rosto olhando compenetrada para uma tela."
-          />
-          <Typography variant="body" component="body">
-            Sou cliente e preciso de um freela!
-          </Typography>
+          <RouterLink to="interesses">
+            <img
+              src={customer}
+              alt="Mulher de cabelos escuros cacheados e óculos, com a mão apoiada no rosto olhando compenetrada para uma tela."
+            />
+            <Typography variant="body" component="body">
+              Sou cliente e preciso de um freela!
+            </Typography>
+          </RouterLink>
         </Col>
         <Col md={6} sm={12}>
           <img
