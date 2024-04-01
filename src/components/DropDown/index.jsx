@@ -80,10 +80,9 @@ const DropDownListStyled = styled.ul`
   }
 `;
 
-const DropDown = ({ title, options }) => {
+const DropDown = ({ title, options, value, onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [focusedOption, setFocusedOption] = useState(null);
-  const [selectedOption, setSelectedOption] = useState(null);
 
   const handleKeyboard = (e) => {
     setIsOpen(true);
@@ -113,14 +112,14 @@ const DropDown = ({ title, options }) => {
         e.preventDefault();
         setFocusedOption(null);
         setIsOpen(false);
-        setSelectedOption(options[focusedOption]);
+        onChange(options[focusedOption]);
         break;
       case "Escape":
       case "Tab":
         e.preventDefault();
         setFocusedOption(null);
         setIsOpen(false);
-        setSelectedOption(null);
+        onChange(null);
         break;
 
       default:
@@ -136,7 +135,7 @@ const DropDown = ({ title, options }) => {
         isOpen={isOpen}
         onKeyDown={handleKeyboard}
       >
-        <div>{selectedOption ? selectedOption.text : "Selecione"}</div>
+        <div>{value ? value.text : "Selecione"}</div>
         <div>
           <span>{isOpen ? "▲" : "▼"}</span>
         </div>
@@ -147,7 +146,7 @@ const DropDown = ({ title, options }) => {
             <DropDownItemStyled
               key={option.value}
               focusActive={index === focusedOption}
-              onClick={() => setSelectedOption(option)}
+              onClick={() => onChange(option)}
             >
               {option.text}
             </DropDownItemStyled>

@@ -4,6 +4,8 @@ import Button from "../../../components/Button";
 import DropDown from "../../../components/DropDown";
 import { Link } from "react-router-dom";
 import CardHeader from "../../../components/CardHeader";
+import { useContext } from "react";
+import { RegisterUserContext } from "../../../context/RegisterUserContext";
 
 const allStates = [
   { text: "Acre", value: "AC" },
@@ -36,6 +38,15 @@ const allStates = [
 ];
 
 function PersonalDataForm() {
+  const {
+    user,
+    setFullName,
+    setCity,
+    setEmail,
+    setPassword,
+    setPasswordConfirmation,
+    setFederatedState,
+  } = useContext(RegisterUserContext);
   return (
     <>
       <CardHeader
@@ -48,28 +59,58 @@ function PersonalDataForm() {
       />
       <Row>
         <Col>
-          <TextField title="Nome Completo" />
+          <TextField
+            title="Nome Completo"
+            value={user.fullName}
+            onChange={setFullName}
+            typeOfInput="text"
+          />
         </Col>
       </Row>
       <Row>
         <Col lg={4} md={4} sm={4}>
-          <DropDown title="Estado" options={allStates} />
+          <DropDown
+            title="Estado"
+            options={allStates}
+            value={user.federatedState}
+            onChange={setFederatedState}
+          />
         </Col>
         <Col lg={8} md={8} sm={8}>
-          <TextField title="Cidade" />
+          <TextField
+            title="Cidade"
+            value={user.city}
+            onChange={setCity}
+            typeOfInput="text"
+          />
         </Col>
       </Row>
       <Row>
         <Col>
-          <TextField title="Email" />
+          <TextField
+            title="Email"
+            typeOfInput="email"
+            value={user.email}
+            onChange={setEmail}
+          />
         </Col>
       </Row>
       <Row>
         <Col lg={6} md={6} sm={6}>
-          <TextField title="Senha" />
+          <TextField
+            title="Senha"
+            typeOfInput="password"
+            value={user.password}
+            onChange={setPassword}
+          />
         </Col>
         <Col lg={6} md={6} sm={6}>
-          <TextField title="Repetir Senha" />
+          <TextField
+            title="Repetir Senha"
+            typeOfInput="password"
+            value={user.passwordConfirmation}
+            onChange={setPasswordConfirmation}
+          />
         </Col>
       </Row>
       <Row>

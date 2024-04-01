@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useContext } from "react";
 import RadioButton from "../../../components/RadioButton";
 import Button from "../../../components/Button";
 import { Col, Row } from "react-grid-system";
 import { Link } from "react-router-dom";
 import CardHeader from "../../../components/CardHeader";
+import { RegisterUserContext } from "../../../context/RegisterUserContext";
 
 const options = [
   {
@@ -34,7 +35,7 @@ const options = [
 ];
 
 const Interests = () => {
-  const [selectedOption, setSelectedOption] = useState("");
+  const { user, setInterests } = useContext(RegisterUserContext);
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -50,8 +51,8 @@ const Interests = () => {
             key={option.value}
             value={option.label}
             title={option.label}
-            checked={option.label === selectedOption}
-            onClick={() => setSelectedOption(option.label)}
+            checked={option.label === user.interests}
+            onClick={() => setInterests(option.label)}
           />
         ))}
       </div>

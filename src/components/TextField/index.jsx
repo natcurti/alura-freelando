@@ -13,6 +13,7 @@ const InputStyled = styled.input`
   display: block;
   width: 100%;
   box-sizing: border-box;
+  padding-left: ${(props) => props.theme.spacing.s};
   margin-top: ${(props) => props.theme.spacing.xs};
   margin-bottom: ${(props) => props.theme.spacing.s};
   background: ${(props) => props.theme.colors.white};
@@ -26,11 +27,15 @@ const InputStyled = styled.input`
 `;
 
 // eslint-disable-next-line react/prop-types
-const TextField = ({ title }) => {
+const TextField = ({ title, value, onChange, typeOfInput = "text" }) => {
   return (
     <LabelStyled>
       {title}
-      <InputStyled />
+      <InputStyled
+        type={typeOfInput}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </LabelStyled>
   );
 };

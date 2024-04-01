@@ -5,8 +5,12 @@ import customer from "../assets/customer.png";
 import freela from "../assets/freela.png";
 import { Link as RouterLink } from "react-router-dom";
 import CardHeader from "../../../components/CardHeader";
+import { useContext } from "react";
+import { RegisterUserContext } from "../../../context/RegisterUserContext";
 
 const SelectCustomer = () => {
+  const { setProfile } = useContext(RegisterUserContext);
+
   return (
     <div style={{ textAlign: "center" }}>
       <CardHeader
@@ -17,7 +21,7 @@ const SelectCustomer = () => {
       />
       <Row>
         <Col md={6} sm={12}>
-          <RouterLink to="interesses">
+          <RouterLink to="interesses" onClick={() => setProfile("Client")}>
             <img
               src={customer}
               alt="Mulher de cabelos escuros cacheados e óculos, com a mão apoiada no rosto olhando compenetrada para uma tela."
