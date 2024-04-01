@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import RadioButton from "../../../components/RadioButton";
-import Typography from "../../../components/Typography";
 import Button from "../../../components/Button";
 import { Col, Row } from "react-grid-system";
 import { Link } from "react-router-dom";
+import CardHeader from "../../../components/CardHeader";
 
 const options = [
   {
@@ -38,12 +38,12 @@ const Interests = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <Typography variant="h1" component="h1">
-        Crie seu cadastro
-      </Typography>
-      <Typography variant="h3" component="h2">
-        Qual a área de interesse?
-      </Typography>
+      <CardHeader
+        title="Crie seu cadastro"
+        subtitle="Qual a área de interesse?"
+        variant="h3"
+        component="h2"
+      />
       <div style={{ marginBottom: "24px" }}>
         {options.map((option) => (
           <RadioButton

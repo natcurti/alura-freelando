@@ -1,9 +1,9 @@
 import { Col, Row } from "react-grid-system";
 import TextField from "../../../components/TextField";
-import Typography from "../../../components/Typography";
 import Button from "../../../components/Button";
 import DropDown from "../../../components/DropDown";
 import { Link } from "react-router-dom";
+import CardHeader from "../../../components/CardHeader";
 
 const allStates = [
   { text: "Acre", value: "AC" },
@@ -38,14 +38,14 @@ const allStates = [
 function PersonalDataForm() {
   return (
     <>
-      <Typography variant="h1" component="h1">
-        Freelando
-      </Typography>
-      <Typography variant="body" component="body">
-        Crie seu perfil gratuitamente para começar a trabalhar com os melhores
+      <CardHeader
+        title="Freelando"
+        subtitle="Crie seu perfil gratuitamente para começar a trabalhar com os melhores
         freelancers. Em seguida, você poderá dar mais detalhes sobre suas
-        demandas e sobre sua forma de trabalho.
-      </Typography>
+        demandas e sobre sua forma de trabalho."
+        variant="body"
+        component="body"
+      />
       <Row>
         <Col>
           <TextField title="Nome Completo" />

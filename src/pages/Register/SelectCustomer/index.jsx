@@ -4,16 +4,17 @@ import { Link } from "../../../components/Link";
 import customer from "../assets/customer.png";
 import freela from "../assets/freela.png";
 import { Link as RouterLink } from "react-router-dom";
+import CardHeader from "../../../components/CardHeader";
 
 const SelectCustomer = () => {
   return (
     <div style={{ textAlign: "center" }}>
-      <Typography variant="h1" component="h1">
-        Crie seu cadastro
-      </Typography>
-      <Typography variant="h3" component="h2">
-        Como podemos te ajudar?
-      </Typography>
+      <CardHeader
+        title="Crie seu cadastro"
+        subtitle="Como podemos te ajudar?"
+        variant="h3"
+        component="h2"
+      />
       <Row>
         <Col md={6} sm={12}>
           <RouterLink to="interesses">

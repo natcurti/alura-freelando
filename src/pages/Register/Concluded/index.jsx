@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import Button from "../../../components/Button";
-import Typography from "../../../components/Typography";
 import { Link } from "react-router-dom";
 import imgConcluded from "../assets/concluded-img.png";
+import CardHeader from "../../../components/CardHeader";
 
 const ImgStyled = styled.img`
   margin-bottom: ${(props) => props.theme.spacing.s};
@@ -11,12 +11,12 @@ const ImgStyled = styled.img`
 const Concluded = () => {
   return (
     <div style={{ textAlign: "center" }}>
-      <Typography variant="h1" component="h1">
-        Seu perfil está completo!
-      </Typography>
-      <Typography variant="body" component="body">
-        Agora é só começar a se conectar com os melhores freelancers do mercado!
-      </Typography>
+      <CardHeader
+        title="Seu perfil está completo!"
+        subtitle="Agora é só começar a se conectar com os melhores freelancers do mercado!"
+        variant="body"
+        component="body"
+      />
       <ImgStyled
         src={imgConcluded}
         alt="Mulher jovem de cabelos cacheados e óculos, sentada à frente de um computador com a mão apoiada no queixo e expressão sorridente."
