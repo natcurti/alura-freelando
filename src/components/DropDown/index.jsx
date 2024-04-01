@@ -134,6 +134,7 @@ const DropDown = ({ title, options, value, onChange }) => {
         onClick={() => setIsOpen(!isOpen)}
         isOpen={isOpen}
         onKeyDown={handleKeyboard}
+        type="button"
       >
         <div>{value ? value.text : "Selecione"}</div>
         <div>

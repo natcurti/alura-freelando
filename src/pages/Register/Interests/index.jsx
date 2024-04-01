@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import RadioButton from "../../../components/RadioButton";
 import Button from "../../../components/Button";
 import { Col, Row } from "react-grid-system";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CardHeader from "../../../components/CardHeader";
 import { RegisterUserContext } from "../../../context/RegisterUserContext";
 
@@ -35,7 +35,16 @@ const options = [
 ];
 
 const Interests = () => {
-  const { user, setInterests } = useContext(RegisterUserContext);
+  const { user, setInterests, validateProfile } =
+    useContext(RegisterUserContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!validateProfile()) {
+      navigate("/cadastro");
+    }
+  }, [validateProfile, navigate]);
 
   return (
     <div style={{ textAlign: "center" }}>

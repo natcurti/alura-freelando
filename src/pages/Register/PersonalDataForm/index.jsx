@@ -2,9 +2,9 @@ import { Col, Row } from "react-grid-system";
 import TextField from "../../../components/TextField";
 import Button from "../../../components/Button";
 import DropDown from "../../../components/DropDown";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CardHeader from "../../../components/CardHeader";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { RegisterUserContext } from "../../../context/RegisterUserContext";
 
 const allStates = [
@@ -46,9 +46,25 @@ function PersonalDataForm() {
     setPassword,
     setPasswordConfirmation,
     setFederatedState,
+    submitUser,
+    validateInterests,
   } = useContext(RegisterUserContext);
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    submitUser();
+  };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!validateInterests()) {
+      navigate("/cadastro");
+    }
+  }, [validateInterests, navigate]);
+
   return (
-    <>
+    <form onSubmit={handleRegister}>
       <CardHeader
         title="Freelando"
         subtitle="Crie seu perfil gratuitamente para começar a trabalhar com os melhores
@@ -121,13 +137,11 @@ function PersonalDataForm() {
         </Col>
         <Col lg={6} md={6} sm={6}>
           <div style={{ textAlign: "right" }}>
-            <Link to="/cadastro/concluido">
-              <Button variant="primary">Próximo</Button>
-            </Link>
+            <Button variant="primary">Próximo</Button>
           </div>
         </Col>
       </Row>
-    </>
+    </form>
   );
 }
 

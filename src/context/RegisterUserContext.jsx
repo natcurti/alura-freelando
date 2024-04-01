@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import { createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const initialUser = {
   profile: "",
@@ -23,10 +24,14 @@ export const RegisterUserContext = createContext({
   setEmail: () => {},
   setPassword: () => {},
   setPasswordConfirmation: () => {},
+  submitUser: () => {},
+  validateProfile: () => {},
+  validateInterests: () => {},
 });
 
 export const RegisterUserProvider = ({ children }) => {
   const [user, setUser] = useState(initialUser);
+  const navigate = useNavigate();
 
   const setProfile = (profile) => {
     setUser((previousState) => {
@@ -100,6 +105,19 @@ export const RegisterUserProvider = ({ children }) => {
     });
   };
 
+  const submitUser = () => {
+    console.log(user);
+    navigate("/cadastro/concluido");
+  };
+
+  const validateProfile = () => {
+    return !!user.profile;
+  };
+
+  const validateInterests = () => {
+    return !!user.interests && !!user.profile;
+  };
+
   const context = {
     user,
     setProfile,
@@ -110,6 +128,9 @@ export const RegisterUserProvider = ({ children }) => {
     setEmail,
     setPassword,
     setPasswordConfirmation,
+    submitUser,
+    validateProfile,
+    validateInterests,
   };
 
   return (
