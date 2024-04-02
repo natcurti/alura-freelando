@@ -11,6 +11,7 @@ const FooterStyled = styled.footer`
   background: ${(props) => props.theme.colors.primary.a};
   padding: ${(props) => props.theme.spacing.xl};
   color: ${(props) => props.theme.colors.white};
+  margin-top: ${(props) => props.theme.spacing.xl};
 `;
 
 const List = styled.ul`

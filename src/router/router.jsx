@@ -5,12 +5,17 @@ import Interests from "../pages/Register/Interests";
 import LayoutBase from "../pages/LayoutBase";
 import PersonalDataForm from "../pages/Register/PersonalDataForm";
 import Concluded from "../pages/Register/Concluded";
+import Home from "../pages/Home";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <LayoutBase />,
     children: [
+      {
+        path: "",
+        element: <Home />,
+      },
       {
         path: "cadastro",
         element: <LayoutBaseRegister />,

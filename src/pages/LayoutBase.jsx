@@ -1,15 +1,12 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { Container } from "react-grid-system";
 
 const LayoutBase = () => {
   return (
     <>
       <Header />
-      <Container style={{ margin: "80px auto", width: "100%" }}>
-        <Outlet />
-      </Container>
+      <Outlet />
       <Footer />
     </>
   );
