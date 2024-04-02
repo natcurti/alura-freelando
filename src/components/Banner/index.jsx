@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import banner from "./assets/banner.png";
 import Typography from "../Typography";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 const SectionStyled = styled.section`
   height: 600px;
@@ -27,7 +28,9 @@ const Banner = () => {
           Uma ponte entre os freelas mais talentosos e os projetos mais
           interessantes!
         </Typography>
-        <Button>Quero me cadastrar!</Button>
+        <Link to="/cadastro">
+          <Button>Quero me cadastrar!</Button>
+        </Link>
       </ContainerTitle>
       <div>
         <img

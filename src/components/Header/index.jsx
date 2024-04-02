@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Col, Row } from "react-grid-system";
 import { Logo } from "../Icons/Logo";
 import { Link } from "../Link";
+import { Link as RouterLink } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.colors.primary.a};
@@ -13,7 +14,9 @@ const Header = () => {
     <HeaderContainer>
       <Row align="center" style={{ paddingInline: "120px" }}>
         <Col lg={6} md={6} sm={6}>
-          <Logo />
+          <RouterLink to="/">
+            <Logo />
+          </RouterLink>
         </Col>
         <Col lg={6} md={6} sm={6}>
           <div style={{ textAlign: "right" }}>
