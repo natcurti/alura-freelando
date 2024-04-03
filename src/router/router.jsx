@@ -6,6 +6,7 @@ import LayoutBase from "../pages/LayoutBase";
 import PersonalDataForm from "../pages/Register/PersonalDataForm";
 import Concluded from "../pages/Register/Concluded";
 import Home from "../pages/Home";
+import Login from "../pages/Login";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: "",
         element: <Home />,
+      },
+      {
+        path: "login",
+        element: <Login />,
       },
       {
         path: "cadastro",

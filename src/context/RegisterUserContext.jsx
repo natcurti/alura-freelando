@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const initialUser = {
   profile: "",
@@ -106,8 +107,10 @@ export const RegisterUserProvider = ({ children }) => {
   };
 
   const submitUser = () => {
-    console.log(user);
-    navigate("/cadastro/concluido");
+    axios
+      .post("http://localhost:8080/auth/register", user)
+      .then(() => navigate("/cadastro/concluido"))
+      .catch((error) => console.error(error));
   };
 
   const validateProfile = () => {
