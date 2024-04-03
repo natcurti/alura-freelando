@@ -14,9 +14,9 @@ function Home() {
   return (
     <SectionContainer>
       <Banner />
-      <AdvantagesCustomer />
+      {/* <AdvantagesCustomer />
       <AdvantagesFreelas />
-      <Skills />
+      <Skills /> */}
     </SectionContainer>
   );
 }
