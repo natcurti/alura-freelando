@@ -1,18 +1,17 @@
 /* eslint-disable react/prop-types */
 import styled from "@emotion/styled";
 
-const PrimaryLink = styled.a`
+const PrimaryLink = styled.span`
   cursor: pointer;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  text-decoration: none;
   color: ${(props) => props.theme.colors.white};
   &:hover {
     color: ${(props) => props.theme.colors.dark.a};
   }
 `;
-const SecondaryLink = styled.a`
+const SecondaryLink = styled.span`
   cursor: pointer;
   font-weight: 400;
   font-size: 16px;

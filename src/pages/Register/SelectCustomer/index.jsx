@@ -21,7 +21,11 @@ const SelectCustomer = () => {
       />
       <Row>
         <Col md={6} sm={12}>
-          <RouterLink to="interesses" onClick={() => setProfile("Client")}>
+          <RouterLink
+            to="interesses"
+            onClick={() => setProfile("Client")}
+            style={{ textDecoration: "none" }}
+          >
             <img
               src={customer}
               alt="Mulher de cabelos escuros cacheados e óculos, com a mão apoiada no rosto olhando compenetrada para uma tela."
@@ -45,7 +49,9 @@ const SelectCustomer = () => {
         Já tem conta?
       </Typography>
       <p>
-        <Link variant="secondary">Faça login</Link>
+        <RouterLink to="/login" style={{ textDecoration: "none" }}>
+          <Link variant="secondary">Faça login</Link>
+        </RouterLink>
       </p>
     </div>
   );

@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { Col, Row } from "react-grid-system";
 import { Logo } from "../Icons/Logo";
-import { Link } from "react-router-dom";
+import { Link } from "../Link";
+import { Link as RouterLink } from "react-router-dom";
 
 const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.colors.primary.a};
@@ -11,31 +12,20 @@ const HeaderContainer = styled.header`
   box-sizing: border-box;
 `;
 
-const LoginLink = styled.span`
-  cursor: pointer;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: ${(props) => props.theme.colors.white};
-  &:hover {
-    color: ${(props) => props.theme.colors.dark.a};
-  }
-`;
-
 const Header = () => {
   return (
     <HeaderContainer>
       <Row align="center">
         <Col sm={8}>
-          <Link to="/">
+          <RouterLink to="/">
             <Logo />
-          </Link>
+          </RouterLink>
         </Col>
         <Col sm={4}>
           <div style={{ textAlign: "right" }}>
-            <Link to="login" style={{ textDecoration: "none" }}>
-              <LoginLink>Login</LoginLink>
-            </Link>
+            <RouterLink to="login" style={{ textDecoration: "none" }}>
+              <Link variant="primary">Login</Link>
+            </RouterLink>
           </div>
         </Col>
       </Row>

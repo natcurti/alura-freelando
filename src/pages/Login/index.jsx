@@ -3,10 +3,11 @@ import { Container, Row } from "react-grid-system";
 import logo from "./assets/logo-freelando.png";
 import Typography from "../../components/Typography";
 import TextField from "../../components/TextField";
-import { Link } from "../../components/Link";
 import Button from "../../components/Button";
+import { Link } from "../../components/Link";
 import styled from "@emotion/styled";
 import ForgotPassword from "./ForgotPassword";
+import { Link as RouterLink } from "react-router-dom";
 
 const containerStyles = {
   display: "flex",
@@ -78,7 +79,9 @@ const Login = () => {
               <Typography variant="body2" component="body2">
                 Ainda não criou sua conta no Freelando?
               </Typography>
-              <Link variant="secondary">Cadastre-se clicando aqui!</Link>
+              <RouterLink to="/cadastro" style={{ textDecoration: "none" }}>
+                <Link variant="secondary">Cadastre-se clicando aqui!</Link>
+              </RouterLink>
             </div>
           </FormContainer>
         </Card>
