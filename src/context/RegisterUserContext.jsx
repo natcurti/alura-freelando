@@ -2,29 +2,29 @@
 import { useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import http from "../http";
 
 const initialUser = {
-  profile: "",
-  interests: "",
-  fullName: "",
-  federatedState: "",
-  city: "",
+  perfil: "",
+  interesse: "",
+  nome: "",
+  uf: "",
+  cidade: "",
   email: "",
-  password: "",
-  passwordConfirmation: "",
+  senha: "",
+  senhaConfirmada: "",
 };
 
 export const RegisterUserContext = createContext({
   user: initialUser,
-  setProfile: () => {},
-  setInterests: () => {},
-  setFullName: () => {},
-  setFederatedState: () => {},
-  setCity: () => {},
+  setPerfil: () => {},
+  setInteresse: () => {},
+  setNome: () => {},
+  setUf: () => {},
+  setCidade: () => {},
   setEmail: () => {},
-  setPassword: () => {},
-  setPasswordConfirmation: () => {},
+  setSenha: () => {},
+  setSenhaConfirmada: () => {},
   submitUser: () => {},
   validateProfile: () => {},
   validateInterests: () => {},
@@ -34,47 +34,47 @@ export const RegisterUserProvider = ({ children }) => {
   const [user, setUser] = useState(initialUser);
   const navigate = useNavigate();
 
-  const setProfile = (profile) => {
+  const setPerfil = (perfil) => {
     setUser((previousState) => {
       return {
         ...previousState,
-        profile,
+        perfil,
       };
     });
   };
 
-  const setInterests = (interests) => {
+  const setInteresse = (interesse) => {
     setUser((previousState) => {
       return {
         ...previousState,
-        interests,
+        interesse,
       };
     });
   };
 
-  const setFullName = (fullName) => {
+  const setNome = (nome) => {
     setUser((previousState) => {
       return {
         ...previousState,
-        fullName,
+        nome,
       };
     });
   };
 
-  const setFederatedState = (federatedState) => {
+  const setUf = (uf) => {
     setUser((previousState) => {
       return {
         ...previousState,
-        federatedState,
+        uf,
       };
     });
   };
 
-  const setCity = (city) => {
+  const setCidade = (cidade) => {
     setUser((previousState) => {
       return {
         ...previousState,
-        city,
+        cidade,
       };
     });
   };
@@ -88,49 +88,50 @@ export const RegisterUserProvider = ({ children }) => {
     });
   };
 
-  const setPassword = (password) => {
+  const setSenha = (senha) => {
     setUser((previousState) => {
       return {
         ...previousState,
-        password,
+        senha,
       };
     });
   };
 
-  const setPasswordConfirmation = (passwordConfirmation) => {
+  const setSenhaConfirmada = (senhaConfirmada) => {
     setUser((previousState) => {
       return {
         ...previousState,
-        passwordConfirmation,
+        senhaConfirmada,
       };
     });
   };
 
   const submitUser = () => {
-    axios
-      .post("http://localhost:8080/auth/register", user)
+    console.log(user);
+    http
+      .post("auth/register", user)
       .then(() => navigate("/cadastro/concluido"))
       .catch((error) => console.error(error));
   };
 
   const validateProfile = () => {
-    return !!user.profile;
+    return !!user.perfil;
   };
 
   const validateInterests = () => {
-    return !!user.interests && !!user.profile;
+    return !!user.interesse && !!user.perfil;
   };
 
   const context = {
     user,
-    setProfile,
-    setInterests,
-    setFullName,
-    setFederatedState,
-    setCity,
+    setPerfil,
+    setInteresse,
+    setNome,
+    setUf,
+    setCidade,
     setEmail,
-    setPassword,
-    setPasswordConfirmation,
+    setSenha,
+    setSenhaConfirmada,
     submitUser,
     validateProfile,
     validateInterests,

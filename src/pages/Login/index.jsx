@@ -8,6 +8,8 @@ import { Link } from "../../components/Link";
 import styled from "@emotion/styled";
 import ForgotPassword from "./ForgotPassword";
 import { Link as RouterLink } from "react-router-dom";
+import { useContext, useState } from "react";
+import { UserSessionContext } from "../../context/UserSession";
 
 const containerStyles = {
   display: "flex",
@@ -44,6 +46,16 @@ const FormContainer = styled.form`
 `;
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+
+  const { login } = useContext(UserSessionContext);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    login(email, senha);
+  };
+
   return (
     <Container style={containerStyles}>
       <Row>
@@ -54,14 +66,24 @@ const Login = () => {
       </Row>
       <Row>
         <Card>
-          <FormContainer>
+          <FormContainer onSubmit={handleLogin}>
             <ContainerTypography>
               <Typography variant="h1" component="h1">
                 Efetuar Login
               </Typography>
             </ContainerTypography>
-            <TextField title="Email" typeOfInput="email" />
-            <TextField title="Senha" typeOfInput="password" />
+            <TextField
+              title="Email"
+              typeOfInput="email"
+              value={email}
+              onChange={setEmail}
+            />
+            <TextField
+              title="Senha"
+              typeOfInput="password"
+              value={senha}
+              onChange={setSenha}
+            />
             <div style={{ width: "100%", textAlign: "right" }}>
               <ForgotPassword />
             </div>

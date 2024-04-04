@@ -35,7 +35,7 @@ const options = [
 ];
 
 const Interests = () => {
-  const { user, setInterests, validateProfile } =
+  const { user, setInteresse, validateProfile } =
     useContext(RegisterUserContext);
 
   const navigate = useNavigate();
@@ -60,8 +60,8 @@ const Interests = () => {
             key={option.value}
             value={option.label}
             title={option.label}
-            checked={option.label === user.interests}
-            onClick={() => setInterests(option.label)}
+            checked={option.label === user.interesse}
+            onClick={() => setInteresse(option.label)}
           />
         ))}
       </div>

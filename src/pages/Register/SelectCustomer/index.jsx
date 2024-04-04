@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { RegisterUserContext } from "../../../context/RegisterUserContext";
 
 const SelectCustomer = () => {
-  const { setProfile } = useContext(RegisterUserContext);
+  const { setPerfil } = useContext(RegisterUserContext);
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -23,7 +23,7 @@ const SelectCustomer = () => {
         <Col md={6} sm={12}>
           <RouterLink
             to="interesses"
-            onClick={() => setProfile("Client")}
+            onClick={() => setPerfil("Client")}
             style={{ textDecoration: "none" }}
           >
             <img

@@ -40,12 +40,12 @@ const allStates = [
 function PersonalDataForm() {
   const {
     user,
-    setFullName,
-    setCity,
+    setNome,
+    setCidade,
     setEmail,
-    setPassword,
-    setPasswordConfirmation,
-    setFederatedState,
+    setSenha,
+    setSenhaConfirmada,
+    setUf,
     submitUser,
     validateInterests,
   } = useContext(RegisterUserContext);
@@ -77,8 +77,8 @@ function PersonalDataForm() {
         <Col>
           <TextField
             title="Nome Completo"
-            value={user.fullName}
-            onChange={setFullName}
+            value={user.nome}
+            onChange={setNome}
             typeOfInput="text"
           />
         </Col>
@@ -88,15 +88,15 @@ function PersonalDataForm() {
           <DropDown
             title="Estado"
             options={allStates}
-            value={user.federatedState}
-            onChange={setFederatedState}
+            value={user.uf}
+            onChange={setUf}
           />
         </Col>
         <Col lg={8} md={8} sm={8}>
           <TextField
             title="Cidade"
-            value={user.city}
-            onChange={setCity}
+            value={user.cidade}
+            onChange={setCidade}
             typeOfInput="text"
           />
         </Col>
@@ -116,16 +116,16 @@ function PersonalDataForm() {
           <TextField
             title="Senha"
             typeOfInput="password"
-            value={user.password}
-            onChange={setPassword}
+            value={user.senha}
+            onChange={setSenha}
           />
         </Col>
         <Col lg={6} md={6} sm={6}>
           <TextField
             title="Repetir Senha"
             typeOfInput="password"
-            value={user.passwordConfirmation}
-            onChange={setPasswordConfirmation}
+            value={user.senhaConfirmada}
+            onChange={setSenhaConfirmada}
           />
         </Col>
       </Row>
