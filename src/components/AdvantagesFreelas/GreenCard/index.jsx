@@ -3,7 +3,7 @@ import Typography from "../../Typography";
 import styled from "@emotion/styled";
 
 const ContainerCard = styled.div`
-  width: 588px;
+  width: 500px;
   background-color: ${(props) => props.theme.colors.secondary.c};
   color: ${(props) => props.theme.colors.primary.c};
   display: flex;

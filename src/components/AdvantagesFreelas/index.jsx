@@ -5,6 +5,7 @@ import { Checkout } from "./Icons/Checkout";
 import { Relationship } from "./Icons/Relationship";
 import { Customer } from "./Icons/Customer";
 import styled from "@emotion/styled";
+import { Row } from "react-grid-system";
 
 const SectionStyled = styled.section`
   display: flex;
@@ -13,19 +14,13 @@ const SectionStyled = styled.section`
   color: ${(props) => props.theme.colors.neutral.a};
 `;
 
-const ContainerCards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${(props) => props.theme.spacing.m};
-`;
-
 const AdvantagesFreelas = () => {
   return (
     <SectionStyled>
       <Typography variant="h2" component="h2">
         Vantagens para freelas
       </Typography>
-      <ContainerCards>
+      <Row justify="center" style={{ gap: "30px", width: "100%" }}>
         <GreenCard title="Clientes verificados">
           <Customer />
         </GreenCard>
@@ -38,7 +33,7 @@ const AdvantagesFreelas = () => {
         <GreenCard title="Remuneração supervisionada">
           <Checkout />
         </GreenCard>
-      </ContainerCards>
+      </Row>
     </SectionStyled>
   );
 };

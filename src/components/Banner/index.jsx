@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Col } from "react-grid-system";
 
 const SectionStyled = styled.section`
-  min-height: 600px;
+  min-height: 650px;
   width: 100%;
   box-sizing: border-box;
   background-color: ${(props) => props.theme.colors.neutral.c};
