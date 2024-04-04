@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import { createContext } from "react";
 import http from "../http";
+import { StoreToken } from "../utils/StoreToken";
 
 export const UserSessionContext = createContext({
   isLoggedIn: false,
@@ -12,13 +13,17 @@ export const UserSessionContext = createContext({
 
 export const UserSessionProvider = ({ children }) => {
   const login = (email, senha) => {
-    console.log(email, senha);
     http
       .post("auth/login", {
         email,
         senha,
       })
-      .then((response) => console.log(response))
+      .then((response) =>
+        StoreToken.defineToken(
+          response.data.access_token,
+          response.data.refresh_token
+        )
+      )
       .catch((error) => console.error(error));
   };
 
