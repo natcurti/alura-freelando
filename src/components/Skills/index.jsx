@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import Typography from "../Typography";
+import { Row } from "react-grid-system";
 
 const skillsArray = [
   "Design",
@@ -25,6 +26,7 @@ const SectionStyled = styled.section`
   flex-direction: column;
   align-items: center;
   color: ${(props) => props.theme.colors.neutral.a};
+  text-align: center;
 `;
 
 const SkillCard = styled.div`
@@ -44,24 +46,17 @@ const SkillCard = styled.div`
   }
 `;
 
-const ContainerSkills = styled.div`
-  width: 1200px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: ${(props) => props.theme.spacing.m};
-`;
-
 const Skills = () => {
   return (
     <SectionStyled>
       <Typography variant="h2" component="h2">
         Quais habilidades você encontra por aqui?
       </Typography>
-      <ContainerSkills>
+      <Row justify="center" style={{ gap: "16px", width: "100%" }}>
         {skillsArray.map((skill, index) => (
           <SkillCard key={index}>{skill}</SkillCard>
         ))}
-      </ContainerSkills>
+      </Row>
     </SectionStyled>
   );
 };

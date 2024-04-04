@@ -16,9 +16,7 @@ function Home() {
       <Banner />
       <AdvantagesCustomer />
       <AdvantagesFreelas />
-      {/* 
-      
-      <Skills /> */}
+      <Skills />
     </SectionContainer>
   );
 }
