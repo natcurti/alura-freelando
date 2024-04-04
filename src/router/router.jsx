@@ -8,6 +8,7 @@ import Concluded from "../pages/Register/Concluded";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
+import Profile from "../pages/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,15 @@ export const router = createBrowserRouter([
           {
             path: "concluido",
             element: <Concluded />,
+          },
+        ],
+      },
+      {
+        path: "area-logada",
+        children: [
+          {
+            path: "perfil",
+            element: <Profile />,
           },
         ],
       },
