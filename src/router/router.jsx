@@ -7,11 +7,13 @@ import PersonalDataForm from "../pages/Register/PersonalDataForm";
 import Concluded from "../pages/Register/Concluded";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import NotFound from "../pages/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <LayoutBase />,
+    ErrorBoundary: NotFound,
     children: [
       {
         path: "",
