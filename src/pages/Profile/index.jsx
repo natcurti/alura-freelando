@@ -6,6 +6,8 @@ import styled from "@emotion/styled";
 import { Container } from "react-grid-system";
 import TextField from "../../components/TextField";
 import Button from "../../components/Button";
+import { useEffect } from "react";
+import http from "../../http";
 
 const ContainerUser = styled.section`
   color: ${(props) => props.theme.colors.neutral.a};
@@ -35,6 +37,13 @@ const ImgStyled = styled.img`
 `;
 
 const Profile = () => {
+  useEffect(() => {
+    http
+      .get("profile")
+      .then((response) => console.log(response))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <>
       <BannerProfile />
