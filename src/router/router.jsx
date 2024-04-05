@@ -25,6 +25,15 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "area-logada",
+        children: [
+          {
+            path: "perfil",
+            element: <Profile />,
+          },
+        ],
+      },
+      {
         path: "cadastro",
         element: <LayoutBaseRegister />,
         children: [
@@ -43,15 +52,6 @@ export const router = createBrowserRouter([
           {
             path: "concluido",
             element: <Concluded />,
-          },
-        ],
-      },
-      {
-        path: "area-logada",
-        children: [
-          {
-            path: "perfil",
-            element: <Profile />,
           },
         ],
       },

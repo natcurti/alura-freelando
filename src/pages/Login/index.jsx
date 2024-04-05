@@ -7,8 +7,8 @@ import Button from "../../components/Button";
 import { Link } from "../../components/Link";
 import styled from "@emotion/styled";
 import ForgotPassword from "./ForgotPassword";
-import { Link as RouterLink } from "react-router-dom";
-import { useContext, useState } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { UserSessionContext } from "../../context/UserSession";
 
 const containerStyles = {
@@ -48,13 +48,20 @@ const FormContainer = styled.form`
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const navigate = useNavigate();
 
-  const { login } = useContext(UserSessionContext);
+  const { login, isLoggedIn } = useContext(UserSessionContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     login(email, senha);
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/area-logada/perfil");
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <Container style={containerStyles}>

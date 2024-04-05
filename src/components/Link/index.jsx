@@ -22,9 +22,27 @@ const SecondaryLink = styled.span`
     border-bottom: 1px solid ${(props) => props.theme.colors.primary.b};
   }
 `;
-export const Link = ({ children, variant = "primary" }) => {
+export const Link = ({
+  children,
+  variant = "primary",
+  logoutFunction = null,
+}) => {
+  const handleLogout = () => {
+    if (logoutFunction) {
+      logoutFunction();
+    }
+  };
+
   if (variant === "primary") {
-    return <PrimaryLink variant={variant}>{children}</PrimaryLink>;
+    return (
+      <PrimaryLink variant={variant} onClick={handleLogout}>
+        {children}
+      </PrimaryLink>
+    );
   }
-  return <SecondaryLink variant={variant}>{children}</SecondaryLink>;
+  return (
+    <SecondaryLink variant={variant} onClick={handleLogout}>
+      {children}
+    </SecondaryLink>
+  );
 };

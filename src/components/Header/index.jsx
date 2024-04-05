@@ -4,6 +4,9 @@ import { Link } from "../Link";
 import { Link as RouterLink } from "react-router-dom";
 import Typography from "../Typography";
 import avatar from "./assets/avatar.svg";
+import { StoreToken } from "../../utils/StoreToken";
+import { useContext } from "react";
+import { UserSessionContext } from "../../context/UserSession";
 
 const HeaderContainer = styled.header`
   background-color: ${(props) => props.theme.colors.primary.a};
@@ -33,6 +36,13 @@ const MenuContainer = styled.nav`
 `;
 
 const Header = () => {
+  const { isLoggedIn, setIsLoggedIn } = useContext(UserSessionContext);
+
+  const logout = () => {
+    StoreToken.logout();
+    setIsLoggedIn(false);
+  };
+
   return (
     <HeaderContainer>
       <LogoContainer>
@@ -41,21 +51,36 @@ const Header = () => {
         </RouterLink>
       </LogoContainer>
       <MenuContainer>
-        <Typography variant="body2" component="body">
-          Contrate
-        </Typography>
-        <Typography variant="body2" component="body">
-          Encontre Trabalho
-        </Typography>
-        <Typography variant="body2" component="body">
-          Meus projetos
-        </Typography>
-        <img src={avatar} alt="Silhueta de um usuário" />
-        <div style={{ textAlign: "right" }}>
-          <RouterLink to="login" style={{ textDecoration: "none" }}>
-            <Link variant="primary">Login</Link>
-          </RouterLink>
-        </div>
+        {isLoggedIn && (
+          <>
+            <Typography variant="body2" component="body">
+              Contrate
+            </Typography>
+            <Typography variant="body2" component="body">
+              Encontre Trabalho
+            </Typography>
+            <Typography variant="body2" component="body">
+              Meus projetos
+            </Typography>
+            <img src={avatar} alt="Silhueta de um usuário" />
+            <div style={{ textAlign: "right" }}>
+              <RouterLink to="/" style={{ textDecoration: "none" }}>
+                <Link variant="primary" logoutFunction={() => logout()}>
+                  Sair
+                </Link>
+              </RouterLink>
+            </div>
+          </>
+        )}
+        {!isLoggedIn && (
+          <>
+            <div style={{ textAlign: "right" }}>
+              <RouterLink to="login" style={{ textDecoration: "none" }}>
+                <Link variant="primary">Login</Link>
+              </RouterLink>
+            </div>
+          </>
+        )}
       </MenuContainer>
     </HeaderContainer>
   );
